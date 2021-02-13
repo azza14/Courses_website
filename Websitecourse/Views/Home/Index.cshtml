@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Websitecourse.Models.Field>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+<!-- Start Awesome section -->
+@Html.Partial("_Slider")
+
+@foreach (var item in Model)
+{
+    <div class="our-Course">
+        <div class="container">
+            <div class="Heading-List">
+                <h3 class="awesome-head head-border-center">
+                    @Html.DisplayFor(modelItem => item.FieldName)
+                </h3>
+            </div>
+            <div class="row">
+                <h5 class="awesom-desc">
+                    @*@Html.DisplayFor(modelItem => item.FieldDescription)*@
+                </h5>
+                <div class="col-md-12 gallery">
+
+                    @foreach (var subItem in item.Courses)
+                    {
+                        <div class="col-md-3 thumbnail " style="min-height:300px;margin-left:20px;margin-bottom:20px;">
+                            <div class="over">
+                                <p class="cor-button-top">
+
+                                    @Html.ActionLink("Details", "Details", new { courseId = subItem.CourseID })
+
+                                </p>
+                            </div>
+                            <div class="cours-img ">
+                                <img src="~/Uploads/@subItem.CourseImage" class="" alt="Alternate Text" style="width:100%;height:128px" />
+
+                            </div>
+                            <div class="cours-details">
+                                <h3 class="text-center">
+                                    @Html.DisplayFor(modelItem => subItem.CourseTitle)
+                                </h3>
+                                @*<h5>
+                                        @Html.Raw(HttpUtility.HtmlDecode(Html.DisplayFor(modelItem => subItem.CourseContent).ToString()))
+                                    </h5>*@
+
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}

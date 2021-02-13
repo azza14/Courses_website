@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Websitecourse.Models.Course>
+
+@{
+    ViewBag.Title = "Search";
+}
+<div class="panel  panel-default" style="padding:10px">
+    <h1 class="panel-heading">Result of Search</h1>
+
+    <div class="row">
+        @foreach (var subItem in Model)
+        {
+            <div class="col-md-3 thumbnail" style="height:300px;margin-left:20px;margin-bottom:20px">
+                <img src="~/Uploads/@subItem.CourseImage" class="" alt="Alternate Text" style="width:128px;height:128px" />
+                <h3 class="text-center">@Html.DisplayFor(modelItem => subItem.CourseTitle)</h3>
+                <h5>@Html.DisplayFor(modelItem => subItem.CourseContent)</h5>
+                @Html.ActionLink("Details", "Details", new { courseId = subItem.CourseID }, new { @class = "btn btn-primary" })
+            </div>
+        }
+    </div>
+</div>

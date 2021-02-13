@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Websitecourse.Models.Course>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<h2>List of Courses</h2>
+
+<p class="text-left">
+    @Html.ActionLink("Create New", "Create",null,new { @class = "btn btn-default" })
+</p>
+<table class="table table-hover table-striped table-bordered ">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Field.FieldName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseContent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseDuration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseImage)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Field.FieldName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseTitle)
+            </td>
+            <td>
+                @Html.Raw(HttpUtility.HtmlDecode(Html.DisplayFor(modelItem => item.CourseContent).ToString()))
+                @*@Html.DisplayFor(modelItem => item.CourseContent)*@
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseDuration)
+            </td>
+            <td>
+                <img src="~/Uploads/@Html.DisplayFor(modelItem => item.CourseImage)"
+                     class="thumbnail" style="height:49px;width:49px" />
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.CourseID }, new { @class = "btn btn-primary" }) |
+                @Html.ActionLink("Details", "Details", new { id = item.CourseID }, new { @class = "btn btn-info" }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.CourseID }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>

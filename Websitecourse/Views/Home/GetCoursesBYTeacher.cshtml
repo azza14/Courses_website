@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Websitecourse.Models.CourseViewModel>
+
+@{
+    ViewBag.Title = "GetCoursesBYTeacher";
+}<!-- Start heading-banner  -->
+<div class="heading-banner">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="breadcrumb">
+                    <li><a href="~/Home/Index">Home</a></li>
+                    <li class="active"> Course Posted</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--  End heading-banner  -->
+<div class="form-horizontal">
+
+@foreach (var gr in Model)
+    {
+         <h3 class="text-info text-center"> @gr.CourseTitle</h3>
+    <table class="table table-hover table-bordered course-student ">
+        <tr>
+            <th> Name Teacher</th>
+            <th>  Message </th>
+            <th>  Apply Date  </th>
+        </tr>
+        @foreach (var subitem in gr.Items)
+        {
+            <tr>
+                <td>
+                    @@*Error*@@
+                    @*@subitem.user.UserName*@
+                </td>
+                <td>
+                    @subitem.Message
+                </td>
+                <td>
+                    @subitem.ApplyDate
+                </td>
+            </tr>
+
+        }
+    </table>
+    }
+
+</div>

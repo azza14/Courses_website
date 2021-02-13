@@ -1,0 +1,61 @@
+﻿@model Websitecourse.Models.Course
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<!-- heading-banner start -->
+<div class="heading-banner">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="breadcrumb">
+                    <li><a href="~/Courses/Index">Course</a></li>
+                    <li class="active">Delete</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- heading-banner end -->
+<h3>Are you sure you want to delete this?</h3>
+<!--  start Delete  -->
+<div class="detail-course">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="img-course">
+                    <img src="~/Uploads/@Html.DisplayFor(model => model.CourseImage)" />
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="detail-text">
+                    <h2>  @Html.DisplayFor(model => model.Field.FieldName)</h2>
+                    <h3><span>@Html.DisplayFor(model => model.CourseTitle) </span></h3>
+                    <div class=" detail-content">
+                        @Html.Raw(HttpUtility.HtmlDecode(Html.DisplayFor(model => model.CourseContent).ToString()))
+                    </div>
+                    <label>
+                        @Html.DisplayFor(model => model.CourseDate)
+                    </label><br />
+                    <label>
+                        @Html.DisplayFor(model => model.CourseDuration)
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--  end Delete  -->
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to  Course List", "Index", null, new { @class = "btn btn-primary" })
+        </div>
+    }
+</div>

@@ -1,0 +1,54 @@
+﻿
+@model IEnumerable<Websitecourse.Models.ApplyToCourse>
+
+@{
+    ViewBag.Title = "GetCoursesBYStudent";
+}
+<!-- Start heading-banner  -->
+<div class="heading-banner">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="breadcrumb">
+                    <li><a href="~/Home/Index">Home</a></li>
+                    <li class="active">Apply Course</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--  End heading-banner  -->
+<h3 class="text-info text-center">All Courses are you applyed</h3>
+
+<table class="table table-hover table-bordered course-student">
+        <tr >
+            <th >
+                @Html.DisplayNameFor(model => model.Message)
+            </th>
+            <th >
+                @Html.DisplayNameFor(model => model.ApplyDate)
+            </th>
+            <th >
+                @Html.DisplayNameFor(model => model.course.CourseTitle)
+            </th>
+
+
+        </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Message)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplyDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.course.CourseTitle)
+            </td>
+
+
+        </tr>
+    }
+
+</table>

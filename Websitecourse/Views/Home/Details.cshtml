@@ -1,0 +1,54 @@
+﻿@model Websitecourse.Models.Course
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<!-- Start heading-banner  -->
+<div class="heading-banner">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="breadcrumb">
+                    <li><a href="~/Home/Index">Home</a></li>
+                    <li class="active">Details of Course</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--  End heading-banner  -->
+<h2 class="text-info">Details of Course</h2>
+<!--  start details  -->
+<div class="detail-course">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="img-course">
+                    <img src="~/Uploads/@Html.DisplayFor(model => model.CourseImage)" />
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="detail-text">
+                    <h2>  @Html.DisplayFor(model => model.Field.FieldName)</h2>
+                    <h3><span>@Html.DisplayFor(model => model.CourseTitle) </span></h3>
+                    <div class=" detail-content">
+                        @Html.Raw(HttpUtility.HtmlDecode(Html.DisplayFor(model => model.CourseContent).ToString()))
+                    </div>
+                    <label>
+                        @Html.DisplayFor(model => model.CourseDate)
+                    </label><br />
+                    <label>
+                        @Html.DisplayFor(model => model.CourseDuration)
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--  end details  -->
+<p>
+    @Html.ActionLink("Apply", "Apply", new { id = Model.CourseID }, new { @class = "btn btn-success" }) |
+    @Html.ActionLink("Back to Home page", "Index", null, new { @class = "btn btn-primary" })
+</p>
